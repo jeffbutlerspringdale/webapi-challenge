@@ -25,15 +25,15 @@ In this challenge, create a web API around the following resources: `Projects` a
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] Mention two parts of Express that you learned about this week.
-
+    does a lot behind the scenes to build your server, express relies a lot on the order of which you declare things and how you import/export
 - [ ] Describe Middleware?
-
+    Tools to use on the backend, can be 1st, 3rd party, or you can make it your self
 - [ ] Describe a Resource?
-
+    anything that you or the computer can use
 - [ ] What can the API return to help clients know if a request was successful?
-
+    status codes
 - [ ] How can we partition our application into sub-applications?
-
+    it would depend on how the front end has architected the app in the front end. with the app that we have built today, you can have an entirely different environment and dataset for once you are logged in and once you are on a users ID
 ## Project Setup
 
 Follow these steps to set up and work on your project:
