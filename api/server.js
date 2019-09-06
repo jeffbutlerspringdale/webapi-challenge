@@ -1,5 +1,6 @@
 const express = require('express');
 
+const testnameactions = require('../data/helpers/actionModel.js');
 const testname = require('../data/helpers/projectModel');
 
 
@@ -46,19 +47,19 @@ server.get('/:id/projectactions', (req, res) => {
       });
 })
 
-server.get('/:id/projectactions/:id', (req, res) => {
-    const { id } = req.params
-    testname.getProjectActions(req.params.id)
-    .then(testname => {
-        res.status(200).json(testname);
-    })
-    .catch(error => {
-        console.log(error);
-        res.status(500).json({
-          message: 'Error finding the project actions',
-        });
-      });
-})
+// server.get('/:id/projectactions', (req, res) => {
+//     const { id } = req.params
+//     testname.getProjectActions(req.params.id)
+//     .then(testnames => {
+//         res.status(200).json(testnames);
+//     })
+//     .catch(error => {
+//         console.log(error);
+//         res.status(500).json({
+//           message: 'Error finding the project actions',
+//         });
+//       });
+// })
 
 server.put('/:id', (req, res) => {
     testname.update(req.params.id, req.body)
@@ -72,10 +73,10 @@ server.put('/:id', (req, res) => {
 })
 
 
-server.put('/:id/projectactions/:projectId', (req, res) => {
-    testname.update(req.params.id, req.body, req.params.project_id)
-    .then(testname => {
-        res.status(200).json(testname);
+server.get('/:id/projectactions', (req, res) => {
+  testnameactions.get(req.params.id, req.body)
+    .then(testnameaction => {
+        res.status(200).json(testnameaction);
     })
     .catch(error => {
         console.log(error);
@@ -93,6 +94,21 @@ server.post('/', (req, res) => {
     .catch (error => {
         console.error('\nERROR', error);
         res.status(500).json({ error: 'Cannont post the testname' });
+      });
+})
+
+
+server.post('/:id/projectactions', (req, res) => {
+  // const { action } = req.body;
+  testnameactions.insert(req.body)
+    .then(testnameaction => {
+        res.status(200).json(testnameaction);
+    })
+    .catch(error => {
+        console.log(error);
+        res.status(500).json({
+          message: 'Error finding the project actions in testnameactions',
+        });
       });
 })
 
